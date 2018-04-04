@@ -75,7 +75,7 @@
     
     hud.animationType = MBProgressHUDAnimationFade;
     hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
-    hud.bezelView.backgroundColor = [UIColor colorWithRGB:0x000000 alpha:0.5];
+    hud.bezelView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5f];
     hud.label.text = message ? message:@"加载中";
     hud.label.font = [UIFont systemFontOfSize:15];
     hud.label.textColor = [UIColor whiteColor];

@@ -6,7 +6,12 @@
 //  Copyright © 2017年 CDBottle. All rights reserved.
 //
 
+
+#if __has_include(<MBProgressHUD/MBProgressHUD.h>)
 #import <MBProgressHUD/MBProgressHUD.h>
+#else
+#import "MBProgressHUD.h"
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 
