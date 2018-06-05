@@ -13,6 +13,9 @@
 
 + (void)showMessage:(NSString *)message onView:(UIView *)view{
     MBProgressHUD *hud = [self createMBProgressHUDviewWithMessage:message onView:view];
+    if (!hud) {
+        return;
+    }
     hud.mode = MBProgressHUDModeText;
     hud.contentColor = [UIColor whiteColor];
     hud.margin = 10.f;
@@ -23,6 +26,9 @@
 
 + (void)showLoading:(NSString *)message onView:(UIView *)view{
     MBProgressHUD *hud = [self createMBProgressHUDviewWithMessage:message onView:view];
+    if (!hud) {
+        return;
+    }
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.contentColor = [UIColor whiteColor];
     hud.square = YES;
@@ -32,6 +38,9 @@
 
 + (MBProgressHUD *)showProgress:(NSString *)message progress:(CGFloat)progress onView:(UIView *)view{
     MBProgressHUD *hud = [self createMBProgressHUDviewWithMessage:message onView:view];
+    if (!hud) {
+        return nil;
+    }
     hud.mode = MBProgressHUDModeAnnularDeterminate;
     hud.progress = progress;
     hud.square = YES;
@@ -43,6 +52,9 @@
 
 + (void)showSuccess:(NSString *)message onView:(UIView *)view{
     MBProgressHUD *hud = [self createMBProgressHUDviewWithMessage:message onView:view];
+    if (!hud) {
+        return;
+    }
     hud.mode = MBProgressHUDModeCustomView;
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_hud_success_new"]];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -61,11 +73,17 @@
 
 + (void)hideAnimated:(BOOL)animated forView:(nonnull UIView *)view{
     MBProgressHUD *hud = [MBProgressHUD HUDForView:view];
+    if (!hud) {
+        return;
+    }
     [hud hideAnimated:YES];
 }
 
 + (MBProgressHUD*)createMBProgressHUDviewWithMessage:(NSString*)message onView:(UIView *)view{
     
+    if (!view) {
+        return nil;
+    }
     
     MBProgressHUD *hud = [MBProgressHUD HUDForView:view];
     
